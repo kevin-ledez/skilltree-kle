@@ -40,7 +40,7 @@ export class SupabaseService {
             niveau
         )`
     );
-    console.log(data);
+    //console.log(data);
     return data;
   }
 }
