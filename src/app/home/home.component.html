@@ -5,7 +5,7 @@
     <div class="badge color-{{ i + 1 }}" *ngFor="let utilisateur of utilisateurs; let i = index">
       <div  (click)="openModal(utilisateur.id)">
         <div class="circle">
-          <i class="fa fa-magic"></i>
+          <img [src]="'assets/image/' + utilisateur.photo" alt="Avatar" class="photo-utilisateur">
         </div>
         <div class="ribbon">
           {{ utilisateur.nom }}

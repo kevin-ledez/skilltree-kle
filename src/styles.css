@@ -133,3 +133,10 @@ body {
 	font-size: 20px;
   }
   
+  .photo-utilisateur {
+	border-radius: 100px;
+	width: 70px;
+	position: relative;
+	right: 5px;
+	bottom: 10px;
+  }
