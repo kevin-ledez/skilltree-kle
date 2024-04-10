@@ -21,9 +21,14 @@ export class ActivitesComponent {
   }
 
   async initUtilisateur(utilisateurId: number) {
+    
+    const niveauxCompetences = await this.supabase.getNiveauxCompetences();
+    const competences = await this.supabase.getCompetences();
+
     const utilisateurs = await this.supabase.getUtilisateurs();
     if (utilisateurs) {
       this.utilisateur = utilisateurs.find((utilisateur: any) => utilisateur.id === utilisateurId);
+      
     } else {
       console.error("La liste des utilisateurs est nulle.");
     }

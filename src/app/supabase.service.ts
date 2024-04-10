@@ -42,6 +42,29 @@ export class SupabaseService {
             niveau
         )`
     );
+
+    return data;
+  }
+
+  async getCompetences() {
+    const { data, error } = await this.supabase.from('competences').select(`
+        id,
+        nom,
+        description
+        )`
+    );
+
+    return data;
+  }
+
+  async getNiveauxCompetences() {
+    const { data, error } = await this.supabase.from('niveaux_competences').select(`
+        id,
+        utilisateur_id,
+        competence_id,
+        niveau
+        )`
+    );
     //console.log(data);
     return data;
   }
