@@ -2,15 +2,14 @@
 
 <div>
   <div class="main-wrapper">
-    <div
-      class="badge color-{{ i + 1 }}"
-      *ngFor="let utilisateur of utilisateurs; let i = index"
-    >
-      <div class="circle">
-        <i class="fa fa-magic"></i>
-      </div>
-      <div class="ribbon">
-        {{ utilisateur.nom }}
+    <div class="badge color-{{ i + 1 }}" *ngFor="let utilisateur of utilisateurs; let i = index">
+      <div  (click)="openModal(utilisateur.id)">
+        <div class="circle">
+          <i class="fa fa-magic"></i>
+        </div>
+        <div class="ribbon">
+          {{ utilisateur.nom }}
+        </div>
       </div>
     </div>
   </div>

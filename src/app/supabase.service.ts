@@ -32,6 +32,7 @@ export class SupabaseService {
 
   async getUtilisateurs() {
     const { data, error } = await this.supabase.from('utilisateurs').select(`
+        id,
         nom,
         email,
         niveaux_competences(
