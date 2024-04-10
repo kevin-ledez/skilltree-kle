@@ -1,1 +1,11 @@
 <p>activites works!</p>
+
+
+<div *ngIf="utilisateur">
+    <h2>Informations de l'utilisateur</h2>
+    <p><strong>Nom:</strong> {{ utilisateur.nom }}</p>
+    <p><strong>Email:</strong> {{ utilisateur.email }}</p>
+    <!-- Ajoutez d'autres champs d'information de l'utilisateur ici -->
+  </div>
+  
+    
