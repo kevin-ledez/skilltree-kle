@@ -35,6 +35,7 @@ export class SupabaseService {
         id,
         nom,
         email,
+        photo,
         niveaux_competences(
             utilisateur_id,
             competence_id,
