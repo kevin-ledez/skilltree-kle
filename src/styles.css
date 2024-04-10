@@ -139,3 +139,42 @@ body {
 	width: 60px;
 	position: relative;
   }
+
+  
+
+  .circle_background {
+	position: absolute;
+	bottom: 0;
+	width: 20px;
+	aspect-ratio: 1/1;
+	background: #11d9fc;
+	box-shadow: 0 0 10px #00a2ff, 0 0 20px #00ff99, 0 0 30px #00ff88,
+	  0 0 50px #00a2ff;
+	border-radius: 50%;
+	animation: animate 5s linear forwards;
+  }
+  
+  @keyframes animate {
+	0% {
+	  transform: translatey(0);
+	  opacity: 0;
+	}
+	50% {
+	  opacity: 1;
+	}
+	100% {
+	  transform: translatey(-100vh);
+	  opacity: 1;
+	}
+  }
+  
+  .circle_background::before {
+	content: "";
+	position: absolute;
+	bottom: 100%;
+	left: 25%;
+	width: 50%;
+	height: 100vh;
+	opacity: 0.5s;
+	background: linear-gradient(#f241d4, transparent);
+  }
