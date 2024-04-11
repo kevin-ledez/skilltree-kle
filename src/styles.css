@@ -26,6 +26,7 @@ body {
 	display: inline-block;
 	top: 0;
 	transition: all 0.2s ease;
+	z-index: 500
   }
   
   .badge:before,
@@ -183,6 +184,7 @@ body {
 	height: 100vh;
 	opacity: 0.5s;
 	background: linear-gradient(#f241d4, transparent);
+	z-index: 1
   }
 
   .cdk-overlay-container {
