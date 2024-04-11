@@ -1,6 +1,11 @@
 body {
 	font-family: 'Comfortaa', sans-serif;
 	background: #111;
+	height: 100vh;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items:center
   }
   
   .main-wrapper {
@@ -178,3 +183,16 @@ body {
 	opacity: 0.5s;
 	background: linear-gradient(#f241d4, transparent);
   }
+
+  .cdk-overlay-container {
+	height: 100% !important;
+	width: 100% !important;
+	display: flex !important;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 0%;
+	z-index: 1000
+  }
+
+  .
