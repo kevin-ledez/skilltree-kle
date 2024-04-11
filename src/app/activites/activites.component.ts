@@ -34,6 +34,9 @@ export class ActivitesComponent {
             if (utilisateurs) {
                 // Rechercher l'utilisateur spécifique
                 this.utilisateur = utilisateurs.find((utilisateur: any) => utilisateur.id === utilisateurId);
+                
+                // Initialiser this.utilisateur.competences en tant que tableau vide
+                this.utilisateur.competences = [];
 
                 // Filtrer les niveaux de compétences liés à cet utilisateur
                 const niveauxUtilisateur = niveauxCompetences.filter((niveau: any) => niveau.utilisateur_id === utilisateurId);
@@ -42,7 +45,7 @@ export class ActivitesComponent {
                 for (const niveau of niveauxUtilisateur) {
                     // Trouver la compétence correspondante
                     const competence = competences.find((competence: any) => competence.id === niveau.competence_id);
-                    // Faire quelque chose avec la compétence, par exemple l'ajouter aux informations de l'utilisateur
+                    // Ajouter la compétence à la liste des compétences de l'utilisateur
                     this.utilisateur.competences.push(competence);
                 }
 
@@ -55,5 +58,5 @@ export class ActivitesComponent {
     } catch (error) {
         console.error("Une erreur s'est produite lors de l'initialisation de l'utilisateur :", error);
     }
-}
+  }
 }
