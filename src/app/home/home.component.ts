@@ -22,13 +22,13 @@ export class HomeComponent {
   }
 
   openModal(utilisateurId: number) {
+    // Ferme la fenêtres modales ouvertes
+    this.dialog.closeAll();
+
+    // Ouvre la nouvelle fenêtre quand on clic sur l'ancienne
     const dialogRef = this.dialog.open(ActivitesComponent, {
       width: '100%',
       data: { utilisateurId: utilisateurId }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      // Faites quelque chose après la fermeture de la fenêtre modale si nécessaire
     });
   }
 }
