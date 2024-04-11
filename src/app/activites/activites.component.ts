@@ -21,16 +21,39 @@ export class ActivitesComponent {
   }
 
   async initUtilisateur(utilisateurId: number) {
-    
-    const niveauxCompetences = await this.supabase.getNiveauxCompetences();
-    const competences = await this.supabase.getCompetences();
+    try {
+        // Récupérer les données des niveaux de compétences et des compétences
+        const niveauxCompetences = await this.supabase.getNiveauxCompetences();
+        const competences = await this.supabase.getCompetences();
+        
+        // Vérifier si les données des niveaux de compétences et des compétences sont définies
+        if (niveauxCompetences && competences) {
+            // Récupérer les données de l'utilisateur
+            const utilisateurs = await this.supabase.getUtilisateurs();
 
-    const utilisateurs = await this.supabase.getUtilisateurs();
-    if (utilisateurs) {
-      this.utilisateur = utilisateurs.find((utilisateur: any) => utilisateur.id === utilisateurId);
-      
-    } else {
-      console.error("La liste des utilisateurs est nulle.");
+            if (utilisateurs) {
+                // Rechercher l'utilisateur spécifique
+                this.utilisateur = utilisateurs.find((utilisateur: any) => utilisateur.id === utilisateurId);
+
+                // Filtrer les niveaux de compétences liés à cet utilisateur
+                const niveauxUtilisateur = niveauxCompetences.filter((niveau: any) => niveau.utilisateur_id === utilisateurId);
+
+                // Pour chaque niveau de compétence de l'utilisateur
+                for (const niveau of niveauxUtilisateur) {
+                    // Trouver la compétence correspondante
+                    const competence = competences.find((competence: any) => competence.id === niveau.competence_id);
+                    // Faire quelque chose avec la compétence, par exemple l'ajouter aux informations de l'utilisateur
+                    this.utilisateur.competences.push(competence);
+                }
+
+            } else {
+                console.error("La liste des utilisateurs est nulle.");
+            }
+        } else {
+            console.error("La liste des niveaux de compétences ou des compétences est nulle.");
+        }
+    } catch (error) {
+        console.error("Une erreur s'est produite lors de l'initialisation de l'utilisateur :", error);
     }
-  }
+}
 }

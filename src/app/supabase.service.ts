@@ -51,21 +51,18 @@ export class SupabaseService {
         id,
         nom,
         description
-        )`
-    );
-
+        `); // Ajoutez une virgule après la définition des colonnes
     return data;
   }
 
   async getNiveauxCompetences() {
-    const { data, error } = await this.supabase.from('niveaux_competences').select(`
-        id,
-        utilisateur_id,
-        competence_id,
-        niveau
-        )`
-    );
-    //console.log(data);
-    return data;
+      const { data, error } = await this.supabase.from('niveaux_competences').select(`
+          id,
+          utilisateur_id,
+          competence_id,
+          niveau
+          `); // Ajoutez une virgule après la définition des colonnes
+      return data;
   }
+
 }
