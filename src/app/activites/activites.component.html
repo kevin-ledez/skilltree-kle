@@ -3,4 +3,17 @@
     <img [src]="'assets/image/' + utilisateur.photo" alt="Avatar" class="photo-utilisateur">
     <p><strong>Nom:</strong> {{ utilisateur.nom }}</p>
     <p><strong>Email:</strong> {{ utilisateur.email }}</p>
-</div>
+    <h3>Compétences:</h3>
+    <ul>
+      <li *ngFor="let competence of utilisateur.competences">
+        {{ competence.nom }} - {{ competence.description }}
+      </li>
+    </ul>
+    <h3>Niveaux de compétences:</h3>
+    <ul>
+      <li *ngFor="let niveau of utilisateur.niveaux_competences">
+        Compétence ID: {{ niveau.competence_id }}, Niveau: {{ niveau.niveau }}
+      </li>
+    </ul>
+  </div>
+
