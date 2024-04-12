@@ -62,13 +62,11 @@ export class ActivitesComponent {
               }
             });
 
-            // Calculer la moyenne des niveaux de compétences pour chaque catégorie
-            this.moyennePremieresCompetences = this.calculerMoyenne(this.premieresCompetences, niveauxUtilisateur);
-            this.moyenneSuivantesCompetences = this.calculerMoyenne(this.suivantesCompetences, niveauxUtilisateur);
-            this.moyenneDernieresCompetences = this.calculerMoyenne(this.dernieresCompetences, niveauxUtilisateur);
-
-            // Calculer la moyenne globale
-            this.moyenneGlobale = this.calculerMoyenneGlobale(niveauxUtilisateur);
+            this.moyennePremieresCompetences = parseFloat(this.calculerMoyenne(this.premieresCompetences, niveauxUtilisateur).toFixed(2));
+            this.moyenneSuivantesCompetences = parseFloat(this.calculerMoyenne(this.suivantesCompetences, niveauxUtilisateur).toFixed(2));
+            this.moyenneDernieresCompetences = parseFloat(this.calculerMoyenne(this.dernieresCompetences, niveauxUtilisateur).toFixed(2));
+            this.moyenneGlobale = parseFloat(this.calculerMoyenneGlobale(niveauxUtilisateur).toFixed(2));
+            
           }
         } else {
           console.error("La liste des utilisateurs est nulle.");

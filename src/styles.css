@@ -222,7 +222,7 @@ body {
 
   .cdk-global-overlay-wrapper {
 	margin-top: auto;
-	width: 100%
+	width: 100%;
   }
 
   .moyenne {
@@ -232,7 +232,8 @@ body {
 
   .detail {
 	margin-left: 20px;
-	font-weight:lighter !important
+	font-weight:lighter !important;
+	cursor: pointer
   }
 
   .arrow {
@@ -248,5 +249,32 @@ body {
 
   .card_modal {
 	padding: 15px;
+	background: linear-gradient(to top right, #b8b2ee, #d8d8d8);
   }
 
+  .head {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+  }
+
+  .fiftypercent {
+	width: 50%
+  }
+
+  .moreinfos {
+	width: 70px;
+  }
+
+  .progress {
+	background-color: darkslateblue !important;
+  }
+
+  .global {
+	width: 100%
+  }
+
+  .global>h2 {
+	color:#11d9fc;
+	text-shadow: 0 0 10px #11d9fc;
+  }
