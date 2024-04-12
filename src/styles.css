@@ -238,3 +238,8 @@ body {
 	transform: rotate(180deg);
 	transition: transform 0.3s ease;
   }
+
+  .card_modal {
+	padding: 15px;
+  }
+
