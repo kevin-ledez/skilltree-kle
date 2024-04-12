@@ -217,3 +217,7 @@ body {
   .cdk-global-overlay-wrapper {
 	margin-top: 200px;
   }
+
+  .card_modal {
+	padding: 15px;
+  }
