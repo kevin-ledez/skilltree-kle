@@ -9,6 +9,27 @@ body {
 	margin: 0 !important;
 	overflow:hidden
   }
+
+  .cdk-overlay-container {
+	height: auto !important;
+	max-height: 70%;
+	width: 60%;
+	overflow:auto;
+	display: flex !important;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 50% !important;
+	left: 50% !important;
+	transform: translate(-50%, -50%) !important;
+	z-index: 1000;
+  }
+
+  @media (min-width:768){
+	.cdk-overlay-container{
+		width: 40% !important;
+	}
+  }
   
   .main-wrapper {
 	width: 90%;
@@ -199,23 +220,9 @@ body {
 	z-index: 1
   }
 
-  .cdk-overlay-container {
-	height: auto !important;
-	max-height: 70%;
-	width: auto !important;
-	overflow:auto;
-	display: flex !important;
-	justify-content: center;
-	align-items: center;
-	position: fixed;
-	top: 50% !important;
-	left: 50% !important;
-	transform: translate(-50%, -50%) !important;
-	z-index: 1000;
-  }
-
   .cdk-global-overlay-wrapper {
 	margin-top: auto;
+	width: 100%
   }
 
   .moyenne {
