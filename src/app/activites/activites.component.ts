@@ -21,7 +21,8 @@ export class ActivitesComponent {
   moyennePremieresCompetences: number = 0;
   moyenneSuivantesCompetences: number = 0;
   moyenneDernieresCompetences: number = 0;
-  moyenneGlobale: number = 0; // Ajout de la propriété moyenneGlobale
+  moyenneGlobale: number = 0;
+  showDetail: any = {};
 
   constructor(private supabase: SupabaseService, @Inject(MAT_DIALOG_DATA) public data: any) {
     this.initUtilisateur(data.utilisateurId);
@@ -101,4 +102,9 @@ export class ActivitesComponent {
     }
     return 0;
   }
+
+    // Fonction pour basculer l'état de visibilité
+    toggleDetail(id: string) {
+      this.showDetail[id] = !this.showDetail[id];
+    }
 }

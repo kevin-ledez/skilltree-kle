@@ -10,8 +10,11 @@
 
 
   <h3>Activités 1:</h3>
-  <p>Moyenne Globale pour cette activité {{ moyennePremieresCompetences }}%</p>
-  <ul>
+    <p class="moyenne">
+      Moyenne Globale pour cette activité {{ moyennePremieresCompetences }}%
+      <span class="detail" (click)="toggleDetail('activites1skillz')">détail <img [src]="'assets/image/arrow.svg'" alt="arrow" class="arrow"></span>
+    </p>
+    <ul id="activites1skillz" class="act" *ngIf="showDetail.activites1skillz">
     <li *ngFor="let competence of premieresCompetences">
       {{ competence.nom }} - {{ competence.description }}
       <ng-container *ngFor="let niveau of utilisateur.niveaux_competences">
@@ -25,8 +28,11 @@
   </ul>
 
   <h3>Activités 2:</h3>
-  <p>Moyenne Globale pour cette activité {{ moyenneSuivantesCompetences }}%</p>
-  <ul>
+    <p class="moyenne">
+      Moyenne Globale pour cette activité {{ moyenneSuivantesCompetences }}%
+      <span class="detail" (click)="toggleDetail('activites2skillz')">détail <img [src]="'assets/image/arrow.svg'" alt="arrow" class="arrow"></span>
+    </p>
+    <ul id="activites2skillz" class="act" *ngIf="showDetail.activites2skillz">
     <li *ngFor="let competence of suivantesCompetences">
       {{ competence.nom }} - {{ competence.description }}
       <ng-container *ngFor="let niveau of utilisateur.niveaux_competences">
@@ -40,8 +46,11 @@
   </ul>
 
   <h3>Activités 3:</h3>
-  <p>Moyenne Globale pour cette activité {{ moyenneDernieresCompetences }}%</p>
-  <ul>
+    <p class="moyenne">
+      Moyenne Globale pour cette activité {{ moyenneDernieresCompetences }}%
+      <span class="detail" (click)="toggleDetail('activites3skillz')">détail <img [src]="'assets/image/arrow.svg'" alt="arrow" class="arrow"></span>
+    </p>
+    <ul id="activites3skillz" class="act" *ngIf="showDetail.activites3skillz">
     <li *ngFor="let competence of dernieresCompetences">
       {{ competence.nom }} - {{ competence.description }}
       <ng-container *ngFor="let niveau of utilisateur.niveaux_competences">
