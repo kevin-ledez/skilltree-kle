@@ -18,6 +18,10 @@ export class ActivitesComponent {
   premieresCompetences: any[] = [];
   suivantesCompetences: any[] = [];
   dernieresCompetences: any[] = [];
+  moyennePremieresCompetences: number = 0;
+  moyenneSuivantesCompetences: number = 0;
+  moyenneDernieresCompetences: number = 0;
+  moyenneGlobale: number = 0; // Ajout de la propriété moyenneGlobale
 
   constructor(private supabase: SupabaseService, @Inject(MAT_DIALOG_DATA) public data: any) {
     this.initUtilisateur(data.utilisateurId);
@@ -56,6 +60,14 @@ export class ActivitesComponent {
                 }
               }
             });
+
+            // Calculer la moyenne des niveaux de compétences pour chaque catégorie
+            this.moyennePremieresCompetences = this.calculerMoyenne(this.premieresCompetences, niveauxUtilisateur);
+            this.moyenneSuivantesCompetences = this.calculerMoyenne(this.suivantesCompetences, niveauxUtilisateur);
+            this.moyenneDernieresCompetences = this.calculerMoyenne(this.dernieresCompetences, niveauxUtilisateur);
+
+            // Calculer la moyenne globale
+            this.moyenneGlobale = this.calculerMoyenneGlobale(niveauxUtilisateur);
           }
         } else {
           console.error("La liste des utilisateurs est nulle.");
@@ -67,5 +79,26 @@ export class ActivitesComponent {
       console.error("Une erreur s'est produite lors de l'initialisation de l'utilisateur :", error);
     }
   }
-  
-}  
+
+  calculerMoyenne(competences: any[], niveauxUtilisateur: any[]): number {
+    const niveauxCompetences = competences.map(competence => {
+      const niveau = niveauxUtilisateur.find(niveau => niveau.competence_id === competence.id);
+      return niveau ? niveau.niveau : 0;
+    });
+    const totalNiveaux = niveauxCompetences.reduce((total, niveau) => total + niveau, 0);
+    const nombreNiveaux = niveauxCompetences.length;
+    if (nombreNiveaux !== 0) {
+      return totalNiveaux / nombreNiveaux;
+    }
+    return 0;
+  }
+
+  calculerMoyenneGlobale(niveauxUtilisateur: any[]): number {
+    const totalNiveaux = niveauxUtilisateur.reduce((total, niveau) => total + niveau.niveau, 0);
+    const nombreNiveaux = niveauxUtilisateur.length;
+    if (nombreNiveaux !== 0) {
+      return totalNiveaux / nombreNiveaux;
+    }
+    return 0;
+  }
+}
