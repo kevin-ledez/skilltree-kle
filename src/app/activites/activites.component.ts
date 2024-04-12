@@ -104,7 +104,7 @@ export class ActivitesComponent {
   }
 
     // Fonction pour basculer l'état de visibilité
-    toggleDetail(id: string) {
-      this.showDetail[id] = !this.showDetail[id];
+    toggleDetail(section: string) {
+      this.showDetail[section] = !this.showDetail[section];
     }
 }
