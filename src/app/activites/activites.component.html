@@ -1,19 +1,42 @@
 <div *ngIf="utilisateur">
-    <h2>Informations de l'utilisateur</h2>
-    <img [src]="'assets/image/' + utilisateur.photo" alt="Avatar" class="photo-utilisateur">
-    <p><strong>Nom:</strong> {{ utilisateur.nom }}</p>
-    <p><strong>Email:</strong> {{ utilisateur.email }}</p>
-    <h3>Compétences:</h3>
-    <ul>
-      <li *ngFor="let competence of utilisateur.competences">
-        {{ competence.nom }} - {{ competence.description }}
-      </li>
-    </ul>
-    <h3>Niveaux de compétences:</h3>
-    <ul>
-      <li *ngFor="let niveau of utilisateur.niveaux_competences">
-        Compétence ID: {{ niveau.competence_id }}, Niveau: {{ niveau.niveau }}
-      </li>
-    </ul>
-  </div>
+  <h2>Informations de l'utilisateur</h2>
+  <img [src]="'assets/image/' + utilisateur.photo" alt="Avatar" class="photo-utilisateur">
+  <p><strong>Nom:</strong> {{ utilisateur.nom }}</p>
+  <p><strong>Email:</strong> {{ utilisateur.email }}</p>
 
+  <h3>Activités 1:</h3>
+  <ul>
+    <li *ngFor="let competence of premieresCompetences">
+      {{ competence.nom }} - {{ competence.description }}
+      <ng-container *ngFor="let niveau of utilisateur.niveaux_competences">
+        <ng-container *ngIf="niveau.competence_id === competence.id">
+          <p>Niveau: {{ niveau.niveau }}</p>
+        </ng-container>
+      </ng-container>
+    </li>
+  </ul>
+
+  <h3>Activités 2:</h3>
+  <ul>
+    <li *ngFor="let competence of suivantesCompetences">
+      {{ competence.nom }} - {{ competence.description }}
+      <ng-container *ngFor="let niveau of utilisateur.niveaux_competences">
+        <ng-container *ngIf="niveau.competence_id === competence.id">
+          <p>Niveau: {{ niveau.niveau }}</p>
+        </ng-container>
+      </ng-container>
+    </li>
+  </ul>
+
+  <h3>Activités 3:</h3>
+  <ul>
+    <li *ngFor="let competence of dernieresCompetences">
+      {{ competence.nom }} - {{ competence.description }}
+      <ng-container *ngFor="let niveau of utilisateur.niveaux_competences">
+        <ng-container *ngIf="niveau.competence_id === competence.id">
+          <p>Niveau: {{ niveau.niveau }}</p>
+        </ng-container>
+      </ng-container>
+    </li>
+  </ul>
+</div>
