@@ -1,8 +1,8 @@
-import { Component, ElementRef, HostListener } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { SupabaseService } from '../supabase.service';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
-import { ActivitesComponent } from '../activites/activites.component';
 import { CommonModule } from '@angular/common';
+import { ActivitesComponent } from '../activites/activites.component';
 
 @Component({
   selector: 'app-home',
@@ -14,13 +14,25 @@ import { CommonModule } from '@angular/common';
 export class HomeComponent {
 
   utilisateurs: any;
-  dialogRef!: MatDialogRef<ActivitesComponent>; // Initialisation vide pour éviter l'erreur
+  dialogRef!: MatDialogRef<any>; // Modifier le type selon le composant de la modale
+  moyenneGlobale: number = 0;
 
   constructor(private supabase: SupabaseService, public dialog: MatDialog, private elementRef: ElementRef) {}
 
   async ngOnInit(){
     this.utilisateurs = await this.supabase.getUtilisateurs();
+
+    // Récupérer tous les niveaux de compétences
+    const niveaux = await this.supabase.getNiveauxCompetences();
+
+    if (niveaux) {
+      // Calculer la moyenne des niveaux
+      this.moyenneGlobale = this.calculerMoyenne(niveaux);
+    } else {
+      console.error("La liste des niveaux de compétences est null.");
+    }
   }
+
 
   openModal(utilisateurId: number) {
     // Ferme la fenêtres modales ouvertes
@@ -47,4 +59,14 @@ export class HomeComponent {
       this.elementRef.nativeElement.ownerDocument.removeEventListener('click', this.dialogClickListener);
     }
   };
+
+  calculerMoyenne(niveaux: any[]): number {
+    if (niveaux.length === 0) return 0;
+
+    // Somme des niveaux
+    const somme = niveaux.reduce((total, niveau) => total + niveau.niveau, 0);
+
+    // Moyenne
+    return somme / niveaux.length;
+  }
 }

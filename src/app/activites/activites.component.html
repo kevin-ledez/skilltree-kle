@@ -1,17 +1,21 @@
 <div class="card_modal" *ngIf="utilisateur">
   <h2>Informations de l'utilisateur</h2>
-  <img [src]="'assets/image/' + utilisateur.photo" alt="Avatar" class="photo-utilisateur">
-  <p><strong>Nom:</strong> {{ utilisateur.nom }}</p>
-  <p><strong>Email:</strong> {{ utilisateur.email }}</p>
+  <div class="head">
+    <div class="fiftypercent">
+      <p><strong>Nom:</strong> {{ utilisateur.nom }}</p>
+      <p><strong>Email:</strong> {{ utilisateur.email }}</p>
+    </div>
+    <div class="fiftypercent">
+      <img [src]="'assets/image/' + utilisateur.photo" alt="Avatar" class="photo-utilisateur moreinfos">
+    </div>
+  </div>
 
-
-  <h3>Moyenne globale des niveaux de compétences:</h3>
-  <p>{{ moyenneGlobale }}%</p>
+  <h3>Moyenne globale des niveaux de compétences: {{ moyenneGlobale }}%</h3>
 
 
   <h3>Activités 1:</h3>
     <p class="moyenne">
-      Moyenne Globale pour cette activité {{ moyennePremieresCompetences }}%
+      Moyenne Globale pour cette activité : {{ moyennePremieresCompetences }}%
       <span class="detail" (click)="toggleDetail('activites1skillz')">
         détail <img [src]="'assets/image/arrow.svg'" alt="arrow" class="arrow" [ngClass]="{'rotate180': showDetail.activites1skillz}">
       </span>
@@ -32,7 +36,7 @@
 
   <h3>Activités 2:</h3>
     <p class="moyenne">
-      Moyenne Globale pour cette activité {{ moyenneSuivantesCompetences }}%
+      Moyenne Globale pour cette activité : {{ moyenneSuivantesCompetences }}%
       <span class="detail" (click)="toggleDetail('activites2skillz')">
         détail <img [src]="'assets/image/arrow.svg'" alt="arrow" class="arrow"  [ngClass]="{'rotate180': showDetail.activites2skillz}"></span>
     </p>
@@ -51,7 +55,7 @@
 
   <h3>Activités 3:</h3>
     <p class="moyenne">
-      Moyenne Globale pour cette activité {{ moyenneDernieresCompetences }}%
+      Moyenne Globale pour cette activité : {{ moyenneDernieresCompetences }}%
       <span class="detail" (click)="toggleDetail('activites3skillz')">
         détail <img [src]="'assets/image/arrow.svg'" alt="arrow" class="arrow" [ngClass]="{'rotate180': showDetail.activites3skillz}"></span>
     </p>
