@@ -1,0 +1,16 @@
+/* styles.css */
+.progress-bar {
+    width: 100%; /* Largeur de la barre de fond */
+    background-color: #ddd; /* Couleur du fond */
+    border-radius: 5px; /* Bord arrondi */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Ombre pour un effet 3D */
+}
+
+.progress {
+    height: 20px; /* Hauteur de la barre de progression */
+    background-color: #4CAF50; /* Couleur de la barre de progression */
+    text-align: center; /* Pour centrer le texte dans la barre */
+    line-height: 20px; /* Alignement vertical du texte */
+    color: white; /* Couleur du texte */
+    border-radius: 5px; /* Bord arrondi */
+}

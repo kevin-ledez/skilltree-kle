@@ -10,7 +10,9 @@
       {{ competence.nom }} - {{ competence.description }}
       <ng-container *ngFor="let niveau of utilisateur.niveaux_competences">
         <ng-container *ngIf="niveau.competence_id === competence.id">
-          <p>Niveau: {{ niveau.niveau }}</p>
+          <div class="progress-bar">
+            <div class="progress" [style.width.%]="niveau.niveau">{{ niveau.niveau }}%</div>
+          </div>
         </ng-container>
       </ng-container>
     </li>
@@ -22,7 +24,9 @@
       {{ competence.nom }} - {{ competence.description }}
       <ng-container *ngFor="let niveau of utilisateur.niveaux_competences">
         <ng-container *ngIf="niveau.competence_id === competence.id">
-          <p>Niveau: {{ niveau.niveau }}</p>
+          <div class="progress-bar">
+            <div class="progress" [style.width.%]="niveau.niveau">{{ niveau.niveau }}%</div>
+          </div>
         </ng-container>
       </ng-container>
     </li>
@@ -34,7 +38,9 @@
       {{ competence.nom }} - {{ competence.description }}
       <ng-container *ngFor="let niveau of utilisateur.niveaux_competences">
         <ng-container *ngIf="niveau.competence_id === competence.id">
-          <p>Niveau: {{ niveau.niveau }}</p>
+          <div class="progress-bar">
+            <div class="progress" [style.width.%]="niveau.niveau">{{ niveau.niveau }}%</div>
+          </div>
         </ng-container>
       </ng-container>
     </li>
