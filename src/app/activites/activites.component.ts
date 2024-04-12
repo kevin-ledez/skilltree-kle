@@ -28,29 +28,32 @@ export class ActivitesComponent {
       // Récupérer les données des niveaux de compétences et des compétences
       const niveauxCompetences = await this.supabase.getNiveauxCompetences();
       const competences = await this.supabase.getCompetences();
-
+  
       // Vérifier si les données des niveaux de compétences et des compétences sont définies
       if (niveauxCompetences && competences) {
         // Récupérer les données de l'utilisateur
         const utilisateurs = await this.supabase.getUtilisateurs();
-
+  
         if (utilisateurs) {
           // Rechercher l'utilisateur spécifique
           this.utilisateur = utilisateurs.find((utilisateur: any) => utilisateur.id === utilisateurId);
-
+  
           if (this.utilisateur) {
             // Filtrer les niveaux de compétences liés à cet utilisateur
             const niveauxUtilisateur = niveauxCompetences.filter((niveau: any) => niveau.utilisateur_id === utilisateurId);
-
+  
             // Organiser les compétences en fonction de leur position dans la liste
             niveauxUtilisateur.forEach((niveau: any, index: number) => {
               const competence = competences.find((competence: any) => competence.id === niveau.competence_id);
-              if (index < 4) {
-                this.premieresCompetences.push(competence);
-              } else if (index < 8) {
-                this.suivantesCompetences.push(competence);
-              } else {
-                this.dernieresCompetences.push(competence);
+              if (competence) {
+                const numero = parseInt(competence.nom.replace("Compétence ", ""));
+                if (numero >= 1 && numero <= 4) {
+                  this.premieresCompetences.push(competence);
+                } else if (numero >= 5 && numero <= 8) {
+                  this.suivantesCompetences.push(competence);
+                } else if (numero >= 9 && numero <= 11) {
+                  this.dernieresCompetences.push(competence);
+                }
               }
             });
           }
@@ -64,4 +67,5 @@ export class ActivitesComponent {
       console.error("Une erreur s'est produite lors de l'initialisation de l'utilisateur :", error);
     }
   }
-}
+  
+}  
