@@ -218,6 +218,28 @@ body {
 	margin-top: auto;
   }
 
+  .moyenne {
+	font-weight: bold;
+	color: grey
+  }
+
+  .detail {
+	margin-left: 20px;
+	font-weight:lighter !important
+  }
+
+  .arrow {
+	width: 7px;
+	transform: rotate(-90deg);
+
+  }
+
+  .rotate180 {
+	transform: rotate(180deg);
+	transition: transform 0.3s ease;
+  }
+
   .card_modal {
 	padding: 15px;
   }
+
