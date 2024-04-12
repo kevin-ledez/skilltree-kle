@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, HostListener } from '@angular/core';
 import { SupabaseService } from '../supabase.service';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivitesComponent } from '../activites/activites.component';
 import { CommonModule } from '@angular/common';
 
@@ -15,7 +15,7 @@ export class HomeComponent {
 
   utilisateurs: any;
 
-  constructor(private supabase: SupabaseService, public dialog: MatDialog) {}
+  constructor(private supabase: SupabaseService, public dialog: MatDialog, private elementRef: ElementRef) {}
 
   async ngOnInit(){
     this.utilisateurs = await this.supabase.getUtilisateurs();
@@ -25,10 +25,25 @@ export class HomeComponent {
     // Ferme la fenêtres modales ouvertes
     this.dialog.closeAll();
 
-    // Ouvre la nouvelle fenêtre quand on clic sur l'ancienne
-    const dialogRef = this.dialog.open(ActivitesComponent, {
-      width: '100%',
-      data: { utilisateurId: utilisateurId }
+    // Configuration de la fenêtre modale
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = '100%';
+    dialogConfig.data = { utilisateurId: utilisateurId };
+
+    // Ouvre la nouvelle fenêtre modale
+    const dialogRef = this.dialog.open(ActivitesComponent, dialogConfig);
+
+    // Ajouter un écouteur d'événements pour fermer la fenêtre modale en cliquant à l'extérieur
+    dialogRef.afterOpened().subscribe(() => {
+      this.elementRef.nativeElement.ownerDocument.addEventListener('click', this.dialogClickListener);
     });
   }
+
+  // Fonction fléchée pour fermer la fenêtre modale lorsque l'utilisateur clique à l'extérieur
+  dialogClickListener = (event: MouseEvent) => {
+    if (!this.elementRef.nativeElement.contains(event.target)) {
+      this.dialog.closeAll();
+      this.elementRef.nativeElement.ownerDocument.removeEventListener('click', this.dialogClickListener);
+    }
+  };
 }
