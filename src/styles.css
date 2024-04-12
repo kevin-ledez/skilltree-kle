@@ -12,9 +12,20 @@ body {
   .main-wrapper {
 	width: 90%;
 	max-width: 900px;
-	margin: 3em auto;
+	height: auto;
+	max-height: 90%;
 	text-align: center;
-	z-index: 999
+	z-index: 999;
+	position: absolute;
+	top: 50% !important;
+	left: 50% !important;
+	transform: translate(-50%, -50%) !important;
+	overflow: scroll;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
   }
   
   .badge {
@@ -189,7 +200,9 @@ body {
 
   .cdk-overlay-container {
 	height: auto !important;
+	max-height: 70%;
 	width: auto !important;
+	overflow:scroll;
 	display: flex !important;
 	justify-content: center;
 	align-items: center;
@@ -198,5 +211,9 @@ body {
 	left: 50% !important;
 	transform: translate(-50%, -50%) !important;
 	z-index: 1000;
+	padding-top: 200px;
   }
 
+  .mat-tab-group {
+	margin-bottom: 48px;
+  }
