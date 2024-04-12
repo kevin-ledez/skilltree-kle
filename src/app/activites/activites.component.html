@@ -4,7 +4,13 @@
   <p><strong>Nom:</strong> {{ utilisateur.nom }}</p>
   <p><strong>Email:</strong> {{ utilisateur.email }}</p>
 
+
+  <h3>Moyenne globale des niveaux de compétences:</h3>
+  <p>{{ moyenneGlobale }}%</p>
+
+
   <h3>Activités 1:</h3>
+  <p>Moyenne Globale pour cette activité {{ moyennePremieresCompetences }}%</p>
   <ul>
     <li *ngFor="let competence of premieresCompetences">
       {{ competence.nom }} - {{ competence.description }}
@@ -19,6 +25,7 @@
   </ul>
 
   <h3>Activités 2:</h3>
+  <p>Moyenne Globale pour cette activité {{ moyenneSuivantesCompetences }}%</p>
   <ul>
     <li *ngFor="let competence of suivantesCompetences">
       {{ competence.nom }} - {{ competence.description }}
@@ -33,6 +40,7 @@
   </ul>
 
   <h3>Activités 3:</h3>
+  <p>Moyenne Globale pour cette activité {{ moyenneDernieresCompetences }}%</p>
   <ul>
     <li *ngFor="let competence of dernieresCompetences">
       {{ competence.nom }} - {{ competence.description }}
@@ -45,17 +53,5 @@
       </ng-container>
     </li>
   </ul>
-
-  <h3>Moyenne des niveaux de compétences pour premières compétences:</h3>
-  <p>{{ moyennePremieresCompetences }}%</p>
-
-  <h3>Moyenne des niveaux de compétences pour suivantes compétences:</h3>
-  <p>{{ moyenneSuivantesCompetences }}%</p>
-
-  <h3>Moyenne des niveaux de compétences pour dernières compétences:</h3>
-  <p>{{ moyenneDernieresCompetences }}%</p>
-
-  <h3>Moyenne globale des niveaux de compétences:</h3>
-<p>{{ moyenneGlobale }}%</p>
 
 </div>
