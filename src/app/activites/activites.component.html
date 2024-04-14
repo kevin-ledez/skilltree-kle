@@ -1,5 +1,4 @@
 <div class="card_modal" *ngIf="utilisateur">
-  <h2>Informations de l'utilisateur</h2>
   <div class="head">
     <div class="fiftypercent">
       <p><strong>Nom:</strong> {{ utilisateur.nom }}</p>
@@ -10,39 +9,37 @@
     </div>
   </div>
 
-  <h3>Moyenne globale des niveaux de compétences: {{ moyenneGlobale }}%</h3>
-
+  <h3>Moyenne globale de {{ utilisateur.nom }} : {{ moyenneGlobale }}%</h3>
 
   <h3>Activités 1:</h3>
     <p class="moyenne">
       Moyenne Globale pour cette activité : {{ moyennePremieresCompetences }}%
       <span class="detail" (click)="toggleDetail('activites1skillz')">
-        détail <img [src]="'assets/image/arrow.svg'" alt="arrow" class="arrow" [ngClass]="{'rotate180': showDetail.activites1skillz}">
+        Voir détails <img [src]="'assets/image/arrow.svg'" alt="arrow" class="arrow" [ngClass]="{'rotate180': showDetail.activites1skillz}">
       </span>
-      
     </p>
-    <ul id="activites1skillz" class="act" *ngIf="showDetail.activites1skillz">
-    <li *ngFor="let competence of premieresCompetences">
-      {{ competence.nom }} - {{ competence.description }}
-      <ng-container *ngFor="let niveau of utilisateur.niveaux_competences">
-        <ng-container *ngIf="niveau.competence_id === competence.id">
-          <div class="progress-bar">
-            <div class="progress" [style.width.%]="niveau.niveau">{{ niveau.niveau }}%</div>
-          </div>
+    <div id="activites1skillz" class="act" *ngIf="showDetail.activites1skillz">
+      <div class="competence" *ngFor="let competence of premieresCompetences">
+        <b>{{ competence.nom }}</b> - {{ competence.description }}
+        <ng-container *ngFor="let niveau of utilisateur.niveaux_competences">
+          <ng-container *ngIf="niveau.competence_id === competence.id">
+            <div class="progress-bar">
+              <div class="progress" [style.width.%]="niveau.niveau">{{ niveau.niveau }}%</div>
+            </div>
+          </ng-container>
         </ng-container>
-      </ng-container>
-    </li>
-  </ul>
+      </div>
+    </div>
 
   <h3>Activités 2:</h3>
     <p class="moyenne">
       Moyenne Globale pour cette activité : {{ moyenneSuivantesCompetences }}%
       <span class="detail" (click)="toggleDetail('activites2skillz')">
-        détail <img [src]="'assets/image/arrow.svg'" alt="arrow" class="arrow"  [ngClass]="{'rotate180': showDetail.activites2skillz}"></span>
+        Voir détails <img [src]="'assets/image/arrow.svg'" alt="arrow" class="arrow"  [ngClass]="{'rotate180': showDetail.activites2skillz}"></span>
     </p>
-    <ul id="activites2skillz" class="act" *ngIf="showDetail.activites2skillz">
-    <li *ngFor="let competence of suivantesCompetences">
-      {{ competence.nom }} - {{ competence.description }}
+    <div id="activites2skillz" class="act" *ngIf="showDetail.activites2skillz">
+    <div class="competence" *ngFor="let competence of suivantesCompetences">
+      <b>{{ competence.nom }}</b> - {{ competence.description }}
       <ng-container *ngFor="let niveau of utilisateur.niveaux_competences">
         <ng-container *ngIf="niveau.competence_id === competence.id">
           <div class="progress-bar">
@@ -50,18 +47,18 @@
           </div>
         </ng-container>
       </ng-container>
-    </li>
-  </ul>
+    </div>
+  </div>
 
   <h3>Activités 3:</h3>
     <p class="moyenne">
       Moyenne Globale pour cette activité : {{ moyenneDernieresCompetences }}%
       <span class="detail" (click)="toggleDetail('activites3skillz')">
-        détail <img [src]="'assets/image/arrow.svg'" alt="arrow" class="arrow" [ngClass]="{'rotate180': showDetail.activites3skillz}"></span>
+        Voir détails <img [src]="'assets/image/arrow.svg'" alt="arrow" class="arrow" [ngClass]="{'rotate180': showDetail.activites3skillz}"></span>
     </p>
-    <ul id="activites3skillz" class="act" *ngIf="showDetail.activites3skillz">
-    <li *ngFor="let competence of dernieresCompetences">
-      {{ competence.nom }} - {{ competence.description }}
+    <div id="activites3skillz" class="act" *ngIf="showDetail.activites3skillz">
+    <div class="competence" *ngFor="let competence of dernieresCompetences">
+      <b>{{ competence.nom }}</b> - {{ competence.description }}
       <ng-container *ngFor="let niveau of utilisateur.niveaux_competences">
         <ng-container *ngIf="niveau.competence_id === competence.id">
           <div class="progress-bar">
@@ -69,7 +66,6 @@
           </div>
         </ng-container>
       </ng-container>
-    </li>
-  </ul>
-
+    </div>
+  </div>
 </div>

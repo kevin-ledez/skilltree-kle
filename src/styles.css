@@ -13,7 +13,7 @@ body {
   .cdk-overlay-container {
 	height: auto !important;
 	max-height: 70%;
-	width: 60%;
+	max-width: 60%;
 	overflow:auto;
 	display: flex !important;
 	justify-content: center;
@@ -231,7 +231,7 @@ body {
   }
 
   .detail {
-	margin-left: 20px;
+	margin-left: 5px;
 	font-weight:lighter !important;
 	cursor: pointer
   }
@@ -258,8 +258,8 @@ body {
 	justify-content: space-around;
   }
 
-  .fiftypercent {
-	width: 50%
+  .competence {
+	margin-bottom: 15px;
   }
 
   .moreinfos {
